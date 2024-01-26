@@ -1,4 +1,7 @@
+require("dotenv").config();
+
 const express = require("express");
+
 const { logReqRes } = require("./middlewares/index");
 const { connectMongoDB } = require("./db/connection");
 const userRouter = require("./routes/user");
@@ -6,10 +9,8 @@ const userRouter = require("./routes/user");
 const app = express();
 const PORT = 8080;
 
-uri =
-  "mongodb+srv://arunspatwa14:arunpatwa.14@cluster-piyush.s3v0qrs.mongodb.net/cluster-piyush?retryWrites=true&w=majority";
 //connectiong with mongoDB
-connectMongoDB(uri);
+connectMongoDB(process.env.MONGODB_URI);
 
 // creating other middlewares
 //Middleware - Plugin
